@@ -20,7 +20,10 @@ aws ec2 describe-instances \
         Name=tag-value,Values=LBDSD \
         Name=tag-key,Values=CanBeStopped \
         Name=tag-value,Values=true \
-    | grep "InstanceId" | head -n 1
+    | grep "InstanceId" \
+    | head -n 1 \
+    | awk '{print $2}' \
+    | cut -d '"' -f 2
 
 # aws ec2 describe-instances \
 #     --query 'Reservations[].Instances[].{Name: Tags[?Key==`Name`].Value | [0], Role: Tags[?Key==`Billing by Role`].Value | [0]}' \

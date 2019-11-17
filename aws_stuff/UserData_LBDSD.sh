@@ -138,10 +138,10 @@ cd /root/
 
 echo "====== Base packages ======"
 apt -y install \
-	debian-keyring \
-	build-essential \
-	software-properties-common \
-	zip unzip p7zip-full 
+    debian-keyring \
+    build-essential \
+    software-properties-common \
+    zip unzip p7zip-full 
 
 echo "====== Node.js 10 ======"
 curl --silent --location https://deb.nodesource.com/setup_10.x | bash -

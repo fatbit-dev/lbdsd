@@ -11,6 +11,7 @@ usage() {
 	echo -e ">>> \t${0} i-0199e5bf7623c53f4"
 }
 
+# https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html
 aws ec2 describe-instances \
     --region eu-west-1 \
     --filters \

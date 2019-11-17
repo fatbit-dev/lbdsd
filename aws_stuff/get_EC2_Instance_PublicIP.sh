@@ -23,3 +23,4 @@ aws ec2 describe-instances \
     | grep "PublicIp" \
     | head -n 1 \
     | awk '{print $2}' \
+    | cut -d '"' -f 2

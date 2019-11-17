@@ -19,8 +19,8 @@ fi
 INSTANCE_ID="${1}"
 
 aws ec2 describe-instances \
-#    --instance-ids i-00d36bdb5431c63e2 \
     --instance-ids "${INSTANCE_ID}" \
     | grep "PublicDnsName" \
     | head -n 1 \
     | awk '{print $2}' \
+    | cut -d '"' -f 2

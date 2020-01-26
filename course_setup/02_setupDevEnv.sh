@@ -67,7 +67,11 @@ systemctl status mariadb
 
 msg '>>> Checking MariaDB port...'
 echo '    Ports found:'
+echo '>>> ---------------------------'
 netstat -ltnp | grep -w ':3306'
+echo '>>> ---------------------------'
+lsof -i :3306 | grep LISTEN
+echo '>>> ---------------------------'
 
 msg '>>> Securing MariaDB installation...'
 mysql_secure_installation

@@ -2,7 +2,7 @@
 
 set -x
 
-# Performs some fancy customizations for CENTUM developers convenience :)
+# Performs some fancy customizations for developers convenience :)
 EC2_USER="admin"
 EC2_USER_HOME="/home/${EC2_USER}"
 VIMRC_FILE="${EC2_USER_HOME}/.vimrc"
@@ -14,7 +14,7 @@ ETC_MOTD_FILE='/etc/motd' # For AWS EC2 Debian instances.
 
 # Constructs a .vimrc file.
 touch "${VIMRC_FILE}"
-cat <<'FABI' >> "${VIMRC_FILE}"
+cat <<'VIMRC' >> "${VIMRC_FILE}"
 syntax on
 set tabstop=4
 set hlsearch
@@ -23,13 +23,13 @@ set mouse=nc
 set pastetoggle=<F2>
 set foldmethod=marker
 set number
-FABI
+VIMRC
 
 chown ${EC2_USER}:${EC2_USER} "${VIMRC_FILE}"
 
 # Adds some aliases to .bashrc or .bash_profile.
 touch "${BASHRC_FILE}"
-cat <<'FABI' >> "${BASHRC_FILE}"
+cat <<'BASHRC' >> "${BASHRC_FILE}"
 
 # Life is colors :)
 export PS1="\[\033[01;32m\][dev] \[\033[01;37m\]\u\[\033[01;34m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ "
@@ -64,12 +64,12 @@ pml () { pm2 log --lines=100 ; }
 unset MAILCHECK
 
 export PATH="/home/admin/bin:$PATH"
-FABI
+BASHRC
 
 chown ${EC2_USER}:${EC2_USER} "${BASHRC_FILE}"
 
 # Customizing MOTD.
-cat > "${ETC_MOTD_FILE}" << 'FABI'
+cat > "${ETC_MOTD_FILE}" << 'MOTD'
 #!/bin/sh
 cat << EOF
 
@@ -86,7 +86,7 @@ cat << EOF
     ----    y Sistemas Distribuidos    ----
 
 EOF
-FABI
+MOTD
 
 # Git repo.
 GIT_CONFIG_FILE="${EC2_USER_HOME}/.gitconfig"
@@ -110,7 +110,7 @@ FILE_AWS_GIT_CONFIG="${DIR_AWS_CONFIG}/config"
 FILE_AWS_GIT_CREDENTIALS="${DIR_AWS_CONFIG}/credentials"
 DIR_AWS_CONFIG_FOR_ROOT="/root/.aws"
 
-# YaTT_EC2_User_Development.
+# LBDSD_EC2_User_Development.
 AWS_CODECOMMIT_REGION="eu-west-1"
 AWS_CODECOMMIT_FORMAT="json"
 AWS_ACCESS_KEY="TODO: Fill the AWS Access Key ID"

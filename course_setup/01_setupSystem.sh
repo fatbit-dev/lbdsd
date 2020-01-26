@@ -30,7 +30,9 @@ fi
 # First, setup software repositories, upgrade system and install some software.
 
 msg 'Setting-up /etc/apt/sources.list'
-cat <<'SOURCESLIST' >>/etc/apt/sources.list
+EPOCH_MILLIS=$(( $(date '+%s%N') / 1000000 ));
+cp /etc/apt/sources.list /etc/apt/sources.list_${EPOCH_MILLIS}
+cat >/etc/apt/sources.list <<'SOURCESLIST'
 deb http://httpredir.debian.org/debian buster main contrib non-free
 deb-src http://httpredir.debian.org/debian buster main contrib non-free
 

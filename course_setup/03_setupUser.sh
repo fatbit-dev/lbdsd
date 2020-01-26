@@ -36,7 +36,7 @@ wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/bin/.bash-git-prompt --depth=1
 
 msg '>>> Setting-up ~/.bashrc...'
-cat <<'BASHRC' >>"~/.bashrc"
+cat >>"~/.bashrc" <<'BASHRC' 
 
 # lbdsd Customizations
 
@@ -142,7 +142,7 @@ mkdir ~/.vim
 git clone https://github.com/flazz/vim-colorschemes.git ~/.vim
 
 # Setup .vimrc
-cat <<'VIMRC' >>~/.vimrc
+cat >>~/.vimrc <<'VIMRC'
 " Configure TAB behaviour
 filetype plugin indent on
 set tabstop=4

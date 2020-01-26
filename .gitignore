@@ -1,0 +1,8 @@
+# OSX stuff
+.DS_Store
+
+.directory
+*.pdf
+
+Ejercicios*
+Actividades*

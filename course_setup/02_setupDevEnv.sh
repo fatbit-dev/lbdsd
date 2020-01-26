@@ -48,8 +48,8 @@ msg '>>> Upgrading system software packages...'
 apt -y update
 apt -y upgrade
 
-msg '>>> Installing net-tools (netstat, ss, ...)'
-apt -y install net-tools
+msg '>>> Installing net-tools & lsof (netstat, ss, ...)'
+apt -y install net-tools lsof
 
 # Install MariaDB Server and Client
 # The installation process will ask you a password for the root user.
@@ -62,7 +62,7 @@ apt -y install \
 msg '>>> Checking MariaDB installation...'
 apt policy mariadb-server
 
-msg '>>> Checking MariaDB system service...'
+msg '>>> Checking MariaDB systemd service...'
 systemctl status mariadb
 
 msg '>>> Checking MariaDB port...'
@@ -104,6 +104,7 @@ msg '>>> Installing bat...'
 wget -O /tmp/bat.deb \
     https://github.com/sharkdp/bat/releases/download/v0.12.1/bat_0.12.1_amd64.deb
 dpkg -i /tmp/bat.deb
+rm /tmp/bat.deb
 
 msg '>>> Installing VisualStudio Code...'
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -113,8 +114,8 @@ apt -y update
 apt -y install code-insiders
 
 msg '>>> Installing DBeaver CE...'
-wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
-echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
+wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | apt-key add -
+echo "deb https://dbeaver.io/debs/dbeaver-ce /" | tee /etc/apt/sources.list.d/dbeaver.list
 apt update
 apt -y install dbeaver-ce
 

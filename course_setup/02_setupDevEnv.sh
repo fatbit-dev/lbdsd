@@ -88,14 +88,17 @@ mkdir prj
 cd prj
 git clone https://github.com/fatbit-dev/lbdsd.git
 
-msg '>>> Installing Java 8 (OpenJDK & OpenJRE)...'
-apt -y install openjdk-8-jdk openjdk-8-jre
-# apt -y install openjdk-11-jdk openjdk-11-jre
-
+msg '>>> Installing Java 11 (OpenJDK & OpenJRE)...'
+apt -y install openjdk-11-jre openjdk-11-jdk
 cat >> /etc/environment <<JAVAPATH
-JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 JAVAPATH
+
+# apt -y install openjdk-8-jre openjdk-8-jdk
+# cat >> /etc/environment <<JAVAPATH
+# JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+# JAVAPATH
 
 msg '>>> Checking Java version...'
 java -version

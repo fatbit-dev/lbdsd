@@ -67,9 +67,9 @@ systemctl status mariadb
 
 msg '>>> Checking MariaDB port...'
 echo '    Ports found:'
-echo '>>> ---------------------------'
-netstat -ltnp | grep -w ':3306'
-echo '>>> ---------------------------'
+echo '>>> -- netstat ----------------'
+netstat -ltnp | grep ':3306'
+echo '>>> -- lsof -------------------'
 lsof -i :3306 | grep LISTEN
 echo '>>> ---------------------------'
 
@@ -89,8 +89,8 @@ cd prj
 git clone https://github.com/fatbit-dev/lbdsd.git
 
 msg '>>> Installing Java 8 (OpenJDK & OpenJRE)...'
-apt -y install -openjdk-8-jdk openjdk-8-jre
-# apt -y  install openjdk-11-jdk openjdk-11-jre
+apt -y install openjdk-8-jdk openjdk-8-jre
+# apt -y install openjdk-11-jdk openjdk-11-jre
 
 cat >> /etc/environment <<JAVAPATH
 JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64

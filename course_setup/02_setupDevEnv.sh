@@ -122,6 +122,9 @@ echo "deb https://dbeaver.io/debs/dbeaver-ce /" | tee /etc/apt/sources.list.d/db
 apt update
 apt -y install dbeaver-ce
 
+msg '>>> Installing fonts: FiraCode and Hack...'
+apt -y install fonts-firacode fonts-hack
+
 msg '>>> Checking DBeaver CE installation...'
 apt policy dbeaver-ce 
 

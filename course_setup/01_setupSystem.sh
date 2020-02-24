@@ -83,6 +83,18 @@ apt -y install \
     gvfs-fuse \
     gvfs-backends
 
+msg '>>> Installing extra Xfce (GTK) icon themes...'
+apt -y install \
+    papirus-icon-theme \
+    arc-theme \
+    numix-gtk-theme \
+    numix-icon-theme \
+    numix-icon-theme-circle \
+    moka-icon-theme
+
+msg '>>> Installing rclone...'
+curl https://rclone.org/install.sh | bash
+
 msg '>>> Preparing VirtualBox Guest Additions dependencies...'
 apt -y install \
 	build-essential \
